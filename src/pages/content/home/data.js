@@ -7,7 +7,7 @@ export const data = [
                 name: "Lorem ipsum dolor",
                 year: 2019,
                 genre: ["lorem", "upsum"],
-                thumbnail: "https://s2.best-wallpaper.net/wallpaper/1440x900/1905/Avengers-Endgame-superheroes-movie-2019_1440x900.jpg"
+                thumbnail: "https://images8.alphacoders.com/100/thumb-1920-1003220.png"
             },
             {
                 name: "Lorem ipsum dolor",
@@ -50,7 +50,7 @@ export const data = [
                 name: "Lorem ipsum dolor",
                 year: 2019,
                 genre: ["lorem", "upsum"],
-                thumbnail: "https://s2.best-wallpaper.net/wallpaper/1440x900/1905/Avengers-Endgame-superheroes-movie-2019_1440x900.jpg"
+                thumbnail: "https://images8.alphacoders.com/100/thumb-1920-1003220.png"
             },
             {
                 name: "Lorem ipsum dolor",
@@ -93,7 +93,7 @@ export const data = [
                 name: "Lorem ipsum dolor",
                 year: 2019,
                 genre: ["lorem", "upsum"],
-                thumbnail: "https://s2.best-wallpaper.net/wallpaper/1440x900/1905/Avengers-Endgame-superheroes-movie-2019_1440x900.jpg"
+                thumbnail: "https://images8.alphacoders.com/100/thumb-1920-1003220.png"
             },
             {
                 name: "Lorem ipsum dolor",
