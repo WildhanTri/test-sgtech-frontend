@@ -6,6 +6,7 @@ import {
     Redirect
 } from "react-router-dom";
 import Login from "./pages/auth/login";
+import Register from "./pages/auth/register";
 import Header from "./shared/header";
 
 const Routes = () => {
@@ -29,6 +30,9 @@ const Routes = () => {
 
                     <Route exact path="/login">
                         <Login />
+                    </Route>
+                    <Route exact path="/register">
+                        <Register />
                     </Route>
                 </Switch>
             </div>

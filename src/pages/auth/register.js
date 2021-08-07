@@ -1,11 +1,13 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from 'react-router-dom';
-import { Form, Card, Button } from 'react-bootstrap';
+import { Row, Col, Form, Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const Login = () => {
+const Register = () => {
 
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -13,13 +15,18 @@ const Login = () => {
 
   }, [])
 
-
   const inputOnchangeHandler = (event) => {
     switch (event.target.id) {
-      case "loginEmail":
+      case "registerFirstName":
+        setFirstName(event.target.value)
+        break
+      case "registerLastName":
+        setLastName(event.target.value)
+        break
+      case "registerEmail":
         setEmail(event.target.value)
         break
-      case "loginPassword":
+      case "registerPassword":
         setPassword(event.target.value)
         break
       default:
@@ -27,7 +34,8 @@ const Login = () => {
     }
   }
 
-  const onLogin = () => {
+  const onRegister = () => {
+    console.log(`${firstName} ${lastName}`)
     console.log(email)
     console.log(password)
   };
@@ -55,14 +63,34 @@ const Login = () => {
                   <h6 style={{ fontWeight: 400 }}>Masukan email dan password anda</h6>
                 </div>
                 <Form className="mb-4">
-                  <Form.Group className="mb-3" controlId="loginEmail">
+                  <Row className="mb-3">
+                    <Col>
+                      <Form.Group controlId="registerFirstName">
+                        <Form.Label>First name</Form.Label>
+                        <Form.Control type="text" placeholder="Last name"
+                          onChange={newFields => {
+                            inputOnchangeHandler(newFields)
+                          }} />
+                      </Form.Group>
+                    </Col>
+                    <Col>
+                      <Form.Group controlId="registerLastName">
+                        <Form.Label>Last name</Form.Label>
+                        <Form.Control type="text" placeholder="First name"
+                          onChange={newFields => {
+                            inputOnchangeHandler(newFields)
+                          }} />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Form.Group className="mb-3" controlId="registerEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email"
                       onChange={newFields => {
                         inputOnchangeHandler(newFields)
                       }} />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="loginPassword">
+                  <Form.Group className="mb-3" controlId="registerPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password"
                       onChange={newFields => {
@@ -73,14 +101,9 @@ const Login = () => {
 
                 <div className="text-center">
                   <div className="mb-2">
-                    <Button variant="primary" onClick={() => onLogin()}>
-                      Login
+                    <Button variant="primary" onClick={() => onRegister()}>
+                      Register
                     </Button>
-                  </div>
-                  <div className="mb-4">
-                    <Link to="#">
-                      Forgot Password
-                    </Link>
                   </div>
                 </div>
               </Card.Body>
@@ -108,4 +131,4 @@ const styles = {
   }
 }
 
-export default Login;
+export default Register;
