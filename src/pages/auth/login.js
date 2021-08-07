@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Form, Card, Button } from 'react-bootstrap';
 
 import './auth.scss';
@@ -9,6 +9,8 @@ const Login = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  
+  const history = useHistory();
 
   useEffect(() => {
 
@@ -31,6 +33,7 @@ const Login = () => {
   const onLogin = () => {
     console.log(email)
     console.log(password)
+    history.push("/home")
   };
 
   return (

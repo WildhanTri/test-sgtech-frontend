@@ -7,18 +7,19 @@ import {
 } from "react-router-dom";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
+import Home from "./pages/content/home";
 import Header from "./shared/header";
 
 const Routes = () => {
 
-    const [stateUser, setStateUser] = useState(false)
+    const [stateUser, setStateUser] = useState(true)
 
     return (
         <Router>
             {
                 stateUser && <Header></Header>
             }
-            <div>
+            <div style={{ paddingTop: 64 }}>
                 <Switch>
                     <Route exact path="/"
                         render={() => {
@@ -33,6 +34,9 @@ const Routes = () => {
                     </Route>
                     <Route exact path="/register">
                         <Register />
+                    </Route>
+                    <Route exact path="/home">
+                        <Home />
                     </Route>
                 </Switch>
             </div>
