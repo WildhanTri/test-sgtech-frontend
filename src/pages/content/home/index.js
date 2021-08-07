@@ -26,7 +26,6 @@ const Home = () => {
 
 const styles = {
     container: {
-        marginTop:24
     }
 }
 

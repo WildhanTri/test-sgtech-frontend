@@ -1,7 +1,7 @@
 export const data = [
     {
         name: "Sekarang Tayang",
-        rowType: "PREMIUM",
+        rowType: "BANNER",
         data: [
             {
                 name: "Lorem ipsum dolor",
