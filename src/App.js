@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Routes from './Routes';
+import { UserProvider } from './stores/userProvider';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserProvider>
+        <Routes>
+        </Routes>
+      </UserProvider>
     </div>
   );
 }
 
+library.add(faShoppingCart)
 export default App;
