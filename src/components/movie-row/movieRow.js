@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Form, Card, Button } from 'react-bootstrap';
+import MovieCardBanner from "./movieCardBanner";
 import MovieCardBasic from "./movieCardBasic";
 import MovieCardPremium from "./movieCardPremium";
 
@@ -17,6 +18,14 @@ const MovieRow = (props) => {
             </h3>
             <div style={styles.listMovies}>
                 <ul style={styles.listMoviesUl}>
+                    {
+                        props.rowType === "BANNER" && props.data.map((r, index) => {
+                            return (
+                                <MovieCardBanner name={r.name} thumbnail={r.thumbnail}></MovieCardBanner>
+                            )
+                        })
+                    }
+
                     {
                         props.rowType === "PREMIUM" && props.data.map((r, index) => {
                             return (
@@ -49,11 +58,11 @@ const styles = {
         scrollBehavior: 'smooth'
     },
     listMoviesUl: {
-        display:'flex',
-        flexDirection:'row',
-        paddingLeft:0,
-        paddingRight:0,
-        marginBottom:0
+        display: 'flex',
+        flexDirection: 'row',
+        paddingLeft: 0,
+        paddingRight: 0,
+        marginBottom: 0
     }
 }
 
