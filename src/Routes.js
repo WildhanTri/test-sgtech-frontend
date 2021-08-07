@@ -1,27 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     BrowserRouter as Router,
     Switch,
-    Route
+    Route,
+    Redirect
 } from "react-router-dom";
+import Login from "./pages/auth/login";
 import Header from "./shared/header";
-import Sidebar from "./shared/sidebar";
 
 const Routes = () => {
 
+    const [stateUser, setStateUser] = useState(false)
+
     return (
         <Router>
-            <Header></Header>
-            {/* <Sidebar></Sidebar> */}
+            {
+                stateUser && <Header></Header>
+            }
             <div>
                 <Switch>
                     <Route exact path="/"
                         render={() => {
                             return (
-                                <div></div>
+                                !stateUser ? <Redirect to="/login" /> : null
                             )
                         }}
                     />
+
+                    <Route exact path="/login">
+                        <Login />
+                    </Route>
                 </Switch>
             </div>
         </Router>
