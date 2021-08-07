@@ -8,6 +8,7 @@ import {
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Home from "./pages/content/home";
+import Profile from "./pages/content/profile";
 import Header from "./shared/header";
 
 const Routes = () => {
@@ -37,6 +38,15 @@ const Routes = () => {
                     </Route>
                     <Route exact path="/home">
                         <Home />
+                    </Route>
+                    <Route exact path="/movies">
+                        <Home />
+                    </Route>
+                    <Route exact path="/series">
+                        <Home />
+                    </Route>
+                    <Route exact path="/profile">
+                        <Profile />
                     </Route>
                 </Switch>
             </div>
