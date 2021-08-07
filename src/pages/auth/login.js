@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Form, Card, Button } from 'react-bootstrap';
 
-import './auth.css';
+import './auth.scss';
 
 const Login = () => {
 
@@ -42,18 +42,12 @@ const Login = () => {
             <div style={styles.wrapperLogo}>
               <h1>Logo</h1>
             </div>
-            <Card >
+            <Card style={styles.wrapperCard}>
               <Card.Body>
                 <div className="mb-4">
                   <div className="d-flex">
-                    <Link className="me-3" to="/login">
-                      <h2>Login</h2>
-                    </Link>
-                    <Link className="me-3" to="/register">
-                      <h2>Register</h2>
-                    </Link>
+                    <h1>Login</h1>
                   </div>
-                  <h6 style={{ fontWeight: 400 }}>Masukan email dan password anda</h6>
                 </div>
                 <Form className="mb-4">
                   <Form.Group className="mb-3" controlId="loginEmail">
@@ -79,8 +73,16 @@ const Login = () => {
                     </Button>
                   </div>
                   <div className="mb-4">
-                    <Link to="#">
-                      Forgot Password
+                    <Link to="#" className="mb-4 btn-action-sub">
+                      Forgot Password?
+                    </Link>
+                  </div>
+                  <div>
+                    <span className="me-1">
+                      Belum punya akun?
+                    </span>
+                    <Link to="/register" className="btn-action-sub">
+                      Register
                     </Link>
                   </div>
                 </div>
@@ -101,11 +103,14 @@ const styles = {
   },
   wrapper: {
     padding: "36px 24px",
-    marginTop: 48
+    marginTop: 16
   },
   wrapperLogo: {
     marginBottom: 36,
     textAlign: 'center'
+  },
+  wrapperCard: {
+    padding: "16px 24px",
   }
 }
 

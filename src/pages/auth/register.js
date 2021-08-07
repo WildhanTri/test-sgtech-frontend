@@ -48,18 +48,14 @@ const Register = () => {
             <div style={styles.wrapperLogo}>
               <h1>Logo</h1>
             </div>
-            <Card >
+            <Card style={styles.wrapperCard}>
               <Card.Body>
                 <div className="mb-4">
                   <div className="d-flex">
-                    <Link className="me-3" to="/login">
-                      <h2>Login</h2>
-                    </Link>
-                    <Link className="me-3" to="/register">
-                      <h2>Register</h2>
-                    </Link>
+                    <div className="d-flex">
+                      <h1>Register</h1>
+                    </div>
                   </div>
-                  <h6 style={{ fontWeight: 400 }}>Masukan email dan password anda</h6>
                 </div>
                 <Form className="mb-4">
                   <Row className="mb-3">
@@ -99,15 +95,23 @@ const Register = () => {
                 </Form>
 
                 <div className="text-center">
-                  <div className="mb-2">
+                  <div className="mb-4 btn-action">
                     <Button variant="primary" onClick={() => onRegister()}>
                       Register
                     </Button>
                   </div>
+
+                  <div>
+                    <span className="me-1">
+                      Sudah punya akun?
+                    </span>
+                    <Link to="/login" className="btn-action-sub">
+                      Login
+                    </Link>
+                  </div>
                 </div>
               </Card.Body>
             </Card>
-
           </div>
         </div>
         <div className="col-md-2 col-lg-3"></div>
@@ -122,11 +126,14 @@ const styles = {
   },
   wrapper: {
     padding: "36px 24px",
-    marginTop: 48
+    marginTop: 16
   },
   wrapperLogo: {
     marginBottom: 36,
     textAlign: 'center'
+  },
+  wrapperCard: {
+    padding: "16px 24px",
   }
 }
 
