@@ -11,9 +11,19 @@ const MovieRow = (props) => {
 
     return (
         <div style={styles.container}>
-            {props.name}{' '}{props.rowType}
+            <h3>
+                {props.name}
+            </h3>
             {
-                props.data.map((r, index) => {
+                props.rowType === "PREMIUM" && props.data.map((r, index) => {
+                    return (
+                        <MovieCard name={r.name}></MovieCard>
+                    )
+                })
+            }
+
+            {
+                props.rowType === "BASIC" && props.data.map((r, index) => {
                     return (
                         <MovieCard name={r.name}></MovieCard>
                     )
@@ -25,7 +35,9 @@ const MovieRow = (props) => {
 
 const styles = {
     container: {
-
+        marginTop: 8,
+        padding:"12px 36px",
+        textAlign: 'left'
     }
 }
 

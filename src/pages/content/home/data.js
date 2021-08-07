@@ -84,9 +84,10 @@ export const data = [
             },
         ]
     },
-    
+
     {
         name: "Animasi",
+        rowType: "BASIC",
         data: [
             {
                 name: "Lorem ipsum dolor",
