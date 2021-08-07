@@ -1,8 +1,7 @@
 
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import { Row, Col, Form, Card, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Register = () => {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { UserContext } from "../stores/userProvider";
-import { Button, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 
 export default class Sidebar extends React.Component {
 
