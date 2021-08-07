@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState } from "react";
 import { Form, Card, Button } from 'react-bootstrap';
-import MovieCard from "./movieCard";
+import MovieCardBasic from "./movieCardBasic";
+import MovieCardPremium from "./movieCardPremium";
 
 const MovieRow = (props) => {
 
@@ -19,7 +20,7 @@ const MovieRow = (props) => {
                     {
                         props.rowType === "PREMIUM" && props.data.map((r, index) => {
                             return (
-                                <MovieCard name={r.name} thumbnail={r.thumbnail}></MovieCard>
+                                <MovieCardPremium name={r.name} thumbnail={r.thumbnail}></MovieCardPremium>
                             )
                         })
                     }
@@ -27,7 +28,7 @@ const MovieRow = (props) => {
                     {
                         props.rowType === "BASIC" && props.data.map((r, index) => {
                             return (
-                                <MovieCard name={r.name} thumbnail={r.thumbnail}></MovieCard>
+                                <MovieCardBasic name={r.name} thumbnail={r.thumbnail}></MovieCardBasic>
                             )
                         })
                     }

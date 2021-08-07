@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, Card, Button } from 'react-bootstrap';
 
-const MovieCard = (props) => {
+const MovieCardPremium = (props) => {
 
     useEffect(() => {
 
@@ -33,4 +33,4 @@ const styles = {
     }
 }
 
-export default MovieCard;
+export default MovieCardPremium;
