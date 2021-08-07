@@ -7,6 +7,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
+import './styles.scss';
+
 function App() {
   return (
     <div className="App">

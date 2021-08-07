@@ -1,0 +1,55 @@
+$primary-color: #E50914;
+$secondary-color: #B81D24;
+
+.btn{
+    font-weight: 600;
+    padding: 4px 24px;
+    // box-shadow: 0 0 8px 0 rgba(17,22,26,.16), 0 4px 8px 0 rgba(17,22,26,.08), 0 8px 16px 0 rgba(17,22,26,.08);
+}
+.btn:focus{
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+.btn.with-shadow{
+    box-shadow: 0 0 8px 0 rgba(17,22,26,.16), 0 4px 8px 0 rgba(17,22,26,.08), 0 8px 16px 0 rgba(17,22,26,.08);
+}
+.btn.with-shadow:focus{
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+.btn-primary {
+    background: $primary-color;
+    border: 1px solid $primary-color;
+}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:disabled,.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active {
+    background: darken($primary-color, 5%);
+    border: 1px solid $primary-color;
+}
+.btn-primary-outline {
+    color: $primary-color;
+    background: white;
+    border: 1px solid $primary-color;;
+}
+.btn-primary-outline:hover,.btn-primary-outline:focus,.btn-primary-outline:disabled,.btn-primary-outline:not(:disabled):not(.disabled).active, .btn-primary-outline:not(:disabled):not(.disabled):active {
+    background: darken(white, 5%);
+    color: $primary-color;
+    border: 1px solid $primary-color;;
+    outline: none;
+}
+.btn-link-active.btn-primary{
+    background: none;
+    border: none;
+    color: $primary-color;
+}
+
+.btn-secondary {
+    background: $secondary-color;
+    border: 1px solid $secondary-color;
+}
+.btn-secondary:hover,.btn-secondary:focus,.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active {
+    background: darken($secondary-color, 5%);
+    border: 1px solid $secondary-color;
+}
+
+
+.text-primary {
+    color: $primary-color!important;
+}

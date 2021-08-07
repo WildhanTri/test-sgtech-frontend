@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Form, Card, Button } from 'react-bootstrap';
 
+import './auth.css';
+
 const Login = () => {
 
   const [email, setEmail] = useState("")
@@ -71,7 +73,7 @@ const Login = () => {
                 </Form>
 
                 <div className="text-center">
-                  <div className="mb-2">
+                  <div className="mb-2 btn-action">
                     <Button variant="primary" onClick={() => onLogin()}>
                       Login
                     </Button>
