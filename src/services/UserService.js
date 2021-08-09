@@ -164,4 +164,25 @@ export default class UserService extends React.Component {
                 )
         })
     }
+    
+    getMyLibrary = () => {
+        return new Promise((resolve, reject) => {
+            axios.get(BACKEND_ENDPOINT + "/v1/library",{ headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+                .then(
+                    (response) => {
+                        resolve(response.data)
+                    }
+                ).catch(
+                    (error) => {
+                        const errorMessage = JSON.parse(error.request.response)
+                        try {
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
+                        } catch (e) {
+                            reject(error)
+                        }
+                    }
+                )
+        })
+    }
 }

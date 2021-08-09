@@ -82,12 +82,12 @@ const style = {
   menuNav: {
     display: 'flex',
     alignItems: 'center',
-    paddingRight: 64
+    paddingRight: 32
   },
   menuSearch: {
     flex: 1,
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     padding: '0px 24px'
   },
