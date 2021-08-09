@@ -24,7 +24,7 @@ const Header = () => {
             <Nav.Link href="/home">StreamPlus</Nav.Link>
           </Nav.Item>
           <Nav.Item as="li" style={style.menuNavItem}>
-            <Nav.Link eventKey="link-1">Movies</Nav.Link>
+            <Nav.Link href="/movies">Movies</Nav.Link>
           </Nav.Item>
         </Nav>
       </div>

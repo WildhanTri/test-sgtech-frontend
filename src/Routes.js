@@ -8,6 +8,7 @@ import {
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Home from "./pages/content/home";
+import Movies from "./pages/content/movies";
 import MovieDetail from "./pages/content/movies/detail";
 import Profile from "./pages/content/profile";
 import Header from "./shared/header";
@@ -41,13 +42,10 @@ const Routes = () => {
                         <Home />
                     </Route>
                     <Route exact path="/movies">
-                        <Home />
+                        <Movies />
                     </Route>
                     <Route exact path="/movies/:movie_uuid">
                         <MovieDetail />
-                    </Route>
-                    <Route exact path="/series">
-                        <Home />
                     </Route>
                     <Route path="/profile">
                         <Profile />
