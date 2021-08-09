@@ -1,9 +1,6 @@
 
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
-import { Form, Card, Button, Col, Row } from 'react-bootstrap';
+import React, { useEffect } from "react";
 import MovieCardBasic from "../../../components/movie-row/movieCardBasic";
-import MovieCardPremium from "../../../components/movie-row/movieCardPremium";
 
 import './styles.scss'
 

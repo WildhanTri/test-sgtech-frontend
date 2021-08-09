@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
-import { Form, Card, Button, Col, Row } from 'react-bootstrap';
+import { Form, Button, Col, Row } from 'react-bootstrap';
 
 const EditProfile = () => {
 
@@ -41,6 +40,8 @@ const EditProfile = () => {
   const onUpdate = () => {
     console.log(`${firstName} ${lastName}`)
     console.log(email)
+    console.log(birthday)
+    console.log(gender)
   };
 
   return (

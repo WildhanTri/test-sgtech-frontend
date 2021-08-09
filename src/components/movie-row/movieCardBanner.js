@@ -1,7 +1,5 @@
 
-import React, { useEffect, useState } from "react";
-import { Form, Card, Button } from 'react-bootstrap';
-
+import React, { useEffect } from "react";
 const MovieCardBanner = (props) => {
 
     useEffect(() => {

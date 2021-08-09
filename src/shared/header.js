@@ -1,9 +1,8 @@
 
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { UserContext } from "../stores/userProvider";
 import { Button, Nav, Form } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Header = () => {
 
@@ -11,7 +10,6 @@ const Header = () => {
 
   const [stateUser, setStateUser] = user
 
-  console.log(stateUser)
   return (
     <div style={style.container}>
       <div style={style.logoWrapper}>

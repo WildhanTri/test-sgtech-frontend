@@ -1,9 +1,6 @@
 
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
-import { Form, Card, Button } from 'react-bootstrap';
+import React, { useEffect } from "react";
 import ProfileNav from "./profileNav";
-import EditProfile from "./editProfile";
 import MyLibrary from "./myLibrary";
 
 const Profile = () => {

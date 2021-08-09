@@ -50,7 +50,7 @@ export const data = [
                 name: "Lorem ipsum dolor",
                 year: 2019,
                 genre: ["lorem", "upsum"],
-                thumbnail: "https://images8.alphacoders.com/100/thumb-1920-1003220.png"
+                thumbnail: "https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/7669/1007669-h-8b554164f69c"
             },
             {
                 name: "Lorem ipsum dolor",

@@ -70,13 +70,14 @@ export default class MovieService extends React.Component {
     
     getHomeRow = () => {
         return new Promise((resolve, reject) => {
-            axios.post(BACKEND_ENDPOINT + "/v1/home", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            axios.get(BACKEND_ENDPOINT + "/v1/home", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
                         resolve(response.data)
                     }
                 ).catch(
                     (error) => {
+                        console.log(error.request.response)
                         const errorMessage = JSON.parse(error.request.response)
                         try {
                             if (errorMessage.message)
@@ -89,9 +90,9 @@ export default class MovieService extends React.Component {
         })
     }
     
-    getHomeRowMovies = (movie_uuid) => {
+    getHomeRowMovies = async (movie_uuid) => {
         return new Promise((resolve, reject) => {
-            axios.post(BACKEND_ENDPOINT + "/v1/home/"+movie_uuid, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            axios.get(BACKEND_ENDPOINT + "/v1/home/"+movie_uuid, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
                         resolve(response.data)

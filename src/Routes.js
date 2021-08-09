@@ -8,8 +8,8 @@ import {
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Home from "./pages/content/home";
+import MovieDetail from "./pages/content/movies/detail";
 import Profile from "./pages/content/profile";
-import MyLibrary from "./pages/content/profile/myLibrary";
 import Header from "./shared/header";
 import { UserContext } from "./stores/userProvider";
 
@@ -42,6 +42,9 @@ const Routes = () => {
                     </Route>
                     <Route exact path="/movies">
                         <Home />
+                    </Route>
+                    <Route exact path="/movies/:movie_uuid">
+                        <MovieDetail />
                     </Route>
                     <Route exact path="/series">
                         <Home />

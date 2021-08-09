@@ -1,15 +1,33 @@
 
 import React, { useEffect, useState } from "react";
-import { Form, Card, Button, Carousel } from 'react-bootstrap';
-import MovieCardBanner from "./movieCardBanner";
+import { Carousel } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import MovieService from "../../services/MovieService";
 import MovieCardBasic from "./movieCardBasic";
 import MovieCardPremium from "./movieCardPremium";
 
 const MovieRow = (props) => {
 
-  useEffect(() => {
+  const [stateMovies, setStateMovies] = useState([])
 
+  const movieService = new MovieService();
+
+  useEffect(() => {
+    console.log(props)
+    getHomeRowDetail(props.uuid)
   }, [])
+
+  const getHomeRowDetail = (home_row_uuid) => {
+    movieService.getHomeRowMovies(home_row_uuid)
+      .then((resolve) => {
+        console.log(home_row_uuid)
+        console.log(resolve)
+        setStateMovies(resolve.object)
+      })
+      .catch((error) => {
+
+      })
+  }
 
   return (
     <div style={styles.container}>
@@ -19,18 +37,19 @@ const MovieRow = (props) => {
           <Carousel>
 
             {
-              props.data.map((r, index) => {
+              stateMovies != null &&
+              stateMovies.map((r, index) => {
                 return (
                   <Carousel.Item interval={3000}>
                     <img
                       className="d-block w-100"
-                      style={{height:600, objectFit:'cover'}}
-                      src={r.thumbnail}
-                      alt={r.name}
+                      style={{ height: 600, objectFit: 'cover' }}
+                      src={r.movie_thumbnail_horizontal_url}
+                      alt={r.movie_title}
                     />
                     <Carousel.Caption>
-                      <h3>{r.name}</h3>
-                      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                      <h3>{r.movie_title}</h3>
+                      <p>{r.movie_synopsis}</p>
                     </Carousel.Caption>
                   </Carousel.Item>
                 )
@@ -50,17 +69,21 @@ const MovieRow = (props) => {
           <div style={styles.listMovies}>
             <ul style={styles.listMoviesUl}>
               {
-                props.rowType === "PREMIUM" && props.data.map((r, index) => {
+                stateMovies != null &&
+                props.rowType === "PREMIUM" && stateMovies.map((r, index) => {
                   return (
-                    <MovieCardPremium name={r.name} thumbnail={r.thumbnail}></MovieCardPremium>
+                    <Link to={"movies/" + r.movie_uuid}>
+                      <MovieCardPremium name={r.movie_title} thumbnail={r.movie_thumbnail_horizontal_url}></MovieCardPremium>
+                    </Link>
                   )
                 })
               }
 
               {
-                props.rowType === "BASIC" && props.data.map((r, index) => {
+                stateMovies != null &&
+                props.rowType === "BASIC" && stateMovies.map((r, index) => {
                   return (
-                    <MovieCardBasic name={r.name} thumbnail={r.thumbnail}></MovieCardBasic>
+                    <MovieCardBasic name={r.movie_title} thumbnail={r.movie_thumbnail_vertical_url}></MovieCardBasic>
                   )
                 })
               }

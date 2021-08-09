@@ -1,22 +1,36 @@
 
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from 'react-router-dom';
-import { Form, Card, Button } from 'react-bootstrap';
-import { data } from './data'
 import MovieRow from "../../../components/movie-row/movieRow";
+import MovieService from "../../../services/MovieService";
 
 const Home = () => {
 
-    useEffect(() => {
 
+    const movieService = new MovieService();
+    const [stateHomeRow, setStateHomeRow] = useState([])
+
+    useEffect(() => {
+        getHomeRow()
     }, [])
+
+
+    const getHomeRow = () => {
+        movieService.getHomeRow()
+            .then((resolve) => {
+                setStateHomeRow(resolve.object)
+            })
+            .catch((error) => {
+
+            })
+    };
+
 
     return (
         <div style={styles.container}>
             {
-                data.map((r, index) => {
+                stateHomeRow.map((r, index) => {
                     return (
-                        <MovieRow name={r.name} data={r.data} rowType={r.rowType}></MovieRow>
+                        <MovieRow key={index} uuid={r.home_row_uuid} name={r.home_row_name} data={r.data} rowType={r.home_row_type}></MovieRow>
                     )
                 })
             }
