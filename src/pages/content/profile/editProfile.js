@@ -67,7 +67,7 @@ const EditProfile = () => {
 
   return (
     <div className="container" style={styles.container}>
-      <h1 className="mb-4">Edit Profile</h1>
+      <h1 className="mb-4">My Profile</h1>
       <Form className="mb-4">
 
         <Form.Group className="mb-3" controlId="profileEmail">

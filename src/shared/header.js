@@ -14,8 +14,8 @@ const Header = () => {
   return (
     <div style={style.container}>
       <div style={style.logoWrapper}>
-        <Link to="/home">
-          LOGO
+        <Link to="/home" style={{color:"#E50914"}}>
+          <span style={{fontFamily:"bebas neue"}}>INDOFLIX</span>
         </Link>
       </div>
       <div style={style.menuNav}>
