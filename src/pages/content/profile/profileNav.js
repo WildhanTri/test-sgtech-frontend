@@ -23,7 +23,10 @@ const ProfileNav = () => {
 
 const styles = {
     container: {
-        minWidth:300
+        minWidth:300,
+        paddingTop:100,
+        border:"1px solid grey",
+        background:"#1B1B1B"
     }
 }
 

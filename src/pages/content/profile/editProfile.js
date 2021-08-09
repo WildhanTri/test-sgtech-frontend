@@ -1,17 +1,26 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Form, Button, Col, Row } from 'react-bootstrap';
+import UserService from "../../../services/UserService";
+import { UserContext } from "../../../stores/userProvider";
+import { convertISODateToYYYYMMDD } from "../../../utils/util";
 
 const EditProfile = () => {
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("triherlian@gmail.com")
-  const [birthday, setBirthday] = useState("")
-  const [gender, setGender] = useState("")
+  const { user } = useContext(UserContext)
+
+  const [stateUser, setStateUser] = user
+
+  const [firstName, setFirstName] = useState(stateUser.user_first_name)
+  const [lastName, setLastName] = useState(stateUser.user_last_name)
+  const [email, setEmail] = useState(stateUser.user_email)
+  const [birthday, setBirthday] = useState(stateUser.user_birthday)
+  const [gender, setGender] = useState(stateUser.user_gender)
+
+  const userService = new UserService();
 
   useEffect(() => {
-
+    
   }, [])
 
 
@@ -42,6 +51,18 @@ const EditProfile = () => {
     console.log(email)
     console.log(birthday)
     console.log(gender)
+    var user = {
+      user_first_name: firstName,
+      user_last_name: lastName,
+      user_email: email,
+      user_birthday: birthday,
+      user_gender: gender
+    }
+    userService.updateProfile(user)
+      .then((resolve) => {
+        setStateUser(resolve.object)
+        localStorage.setItem("user", JSON.stringify(resolve.object))
+      })
   };
 
   return (
@@ -58,7 +79,7 @@ const EditProfile = () => {
           <Col>
             <Form.Group controlId="profileFirstName">
               <Form.Label className="fw-bold">First name</Form.Label>
-              <Form.Control type="text" placeholder="Last name"
+              <Form.Control type="text" placeholder="First name" value={firstName}
                 onChange={newFields => {
                   inputOnchangeHandler(newFields)
                 }} />
@@ -67,7 +88,7 @@ const EditProfile = () => {
           <Col>
             <Form.Group controlId="profileLastName">
               <Form.Label className="fw-bold">Last name</Form.Label>
-              <Form.Control type="text" placeholder="First name"
+              <Form.Control type="text" placeholder="Last name" value={lastName}
                 onChange={newFields => {
                   inputOnchangeHandler(newFields)
                 }} />
@@ -76,14 +97,14 @@ const EditProfile = () => {
         </Row>
         <Form.Group className="mb-3" controlId="profileBirthday">
           <Form.Label className="fw-bold">Tanggal lahir</Form.Label>
-          <Form.Control type="date" placeholder="Tanggal Lahir"
+          <Form.Control type="date" placeholder="Tanggal Lahir" value={convertISODateToYYYYMMDD(birthday)}
             onChange={newFields => {
               inputOnchangeHandler(newFields)
             }} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="profileGender">
           <Form.Label className="fw-bold">Jenis kelamin</Form.Label>
-          <Form.Select
+          <Form.Select value={gender}
             onChange={newFields => {
               inputOnchangeHandler(newFields)
             }} >

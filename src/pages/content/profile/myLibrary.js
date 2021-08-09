@@ -52,7 +52,7 @@ const MyLibrary = () => {
   return (
     <div className="container" style={styles.container}>
       <h1 className="mb-4">My Library</h1>
-      <div className="d-flex flex-wrap sadfg">
+      <div className="d-flex flex-wrap">
         {
           dummies.map((r, index) => {
             return (

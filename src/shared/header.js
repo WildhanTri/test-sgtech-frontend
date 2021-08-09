@@ -14,7 +14,9 @@ const Header = () => {
   return (
     <div style={style.container}>
       <div style={style.logoWrapper}>
-        LOGO
+        <Link to="/home">
+          LOGO
+        </Link>
       </div>
       <div style={style.menuNav}>
         <Nav defaultActiveKey="/home" as="ul">
@@ -23,9 +25,6 @@ const Header = () => {
           </Nav.Item>
           <Nav.Item as="li" style={style.menuNavItem}>
             <Nav.Link eventKey="link-1">Movies</Nav.Link>
-          </Nav.Item>
-          <Nav.Item as="li" style={style.menuNavItem}>
-            <Nav.Link eventKey="link-2">Series</Nav.Link>
           </Nav.Item>
         </Nav>
       </div>
@@ -41,12 +40,14 @@ const Header = () => {
         stateUser != null &&
         <div style={{ display: 'flex' }}>
           <div style={style.menuLibrary}>
-            <Button variant="primary">
-              My Library
-            </Button>
+            <Link to="/profile/my-library">
+              <Button variant="primary">
+                My Library
+              </Button>
+            </Link>
           </div>
 
-          <Link to="/profile" style={{textDecoration:"none"}}>
+          <Link to="/profile" style={{ textDecoration: "none" }}>
             <div style={style.menuProfile}>
               <img style={style.menuProfilePicture} src={'https://thispersondoesnotexist.com/image'} alt={'Profile'} />
               <div style={style.menuProfileName}>
