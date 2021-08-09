@@ -49,7 +49,7 @@ export default class MovieService extends React.Component {
     
     buyMovie = (movie_uuid) => {
         return new Promise((resolve, reject) => {
-            axios.post(BACKEND_ENDPOINT + "/v1/movie/" + movie_uuid + "/buy", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            axios.post(BACKEND_ENDPOINT + "/v1/movie/" + movie_uuid + "/buy", {}, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
                         resolve(response.data)

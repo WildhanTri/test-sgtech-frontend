@@ -6,6 +6,8 @@ import MovieService from "../../../services/MovieService";
 import { Button, Nav, Form } from 'react-bootstrap';
 import { currencyFormat } from "../../../utils/util";
 
+import './styles.scss'
+
 const Movies = () => {
 
   const [stateMovies, setStateMovies] = useState([])
@@ -48,7 +50,7 @@ const Movies = () => {
                         <Link to={"/movies/" + movie.movie_uuid}>
                           <button className="btn btn-primary me-2">Detail</button>
                         </Link>
-                        <button className="btn btn-primary">Beli { currencyFormat(movie.movie_price) }</button>
+                        {/* <button className="btn btn-primary">Beli { currencyFormat(movie.movie_price) }</button> */}
                       </div>
                     </div>
                   </div>
