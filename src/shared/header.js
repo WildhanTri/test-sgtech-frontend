@@ -46,7 +46,7 @@ const Header = () => {
 
           <Link to="/profile/edit-profile" style={{ textDecoration: "none", color: 'white' }}>
             <div style={style.menuProfile}>
-              <img style={style.menuProfilePicture} src={'https://thispersondoesnotexist.com/image'} alt={'Profile'} />
+              <img style={style.menuProfilePicture} src={'https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo-thumbnail.png'} alt={'Profile'} />
               <div style={style.menuProfileName}>
                 <p style={style.menuProfileFullName} className="m-0">{stateUser.user_first_name}</p>
                 <p style={style.menuProfileSubscriptionStatus} className="m-0">{stateUser.user_email}</p>

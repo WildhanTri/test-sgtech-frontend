@@ -164,10 +164,52 @@ export default class UserService extends React.Component {
                 )
         })
     }
-    
+
     getMyLibrary = () => {
         return new Promise((resolve, reject) => {
-            axios.get(BACKEND_ENDPOINT + "/v1/library",{ headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            axios.get(BACKEND_ENDPOINT + "/v1/library", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+                .then(
+                    (response) => {
+                        resolve(response.data)
+                    }
+                ).catch(
+                    (error) => {
+                        const errorMessage = JSON.parse(error.request.response)
+                        try {
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
+                        } catch (e) {
+                            reject(error)
+                        }
+                    }
+                )
+        })
+    }
+
+    startMembership = () => {
+        return new Promise((resolve, reject) => {
+            axios.post(BACKEND_ENDPOINT + "/v1/membership/start", {}, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+                .then(
+                    (response) => {
+                        resolve(response.data)
+                    }
+                ).catch(
+                    (error) => {
+                        const errorMessage = JSON.parse(error.request.response)
+                        try {
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
+                        } catch (e) {
+                            reject(error)
+                        }
+                    }
+                )
+        })
+    }
+
+    cancelMembership = () => {
+        return new Promise((resolve, reject) => {
+            axios.delete(BACKEND_ENDPOINT + "/v1/membership/cancel", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
                         resolve(response.data)
