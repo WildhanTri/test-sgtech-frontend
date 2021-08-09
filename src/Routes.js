@@ -49,7 +49,7 @@ const Routes = () => {
                     <Route exact path="/series">
                         <Home />
                     </Route>
-                    <Route exact path="/profile">
+                    <Route path="/profile">
                         <Profile />
                     </Route>
                 </Switch>

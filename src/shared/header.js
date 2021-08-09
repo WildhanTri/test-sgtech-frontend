@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 
 import { UserContext } from "../stores/userProvider";
 import { Button, Nav, Form } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -29,7 +30,7 @@ const Header = () => {
         </Nav>
       </div>
       <div style={style.menuSearch}>
-        <Form style={{ maxWidth:'512px', width: '100%' }}>
+        <Form style={{ maxWidth: '512px', width: '100%' }}>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Control type="text" placeholder="Cari film / serial..." />
           </Form.Group>
@@ -38,20 +39,21 @@ const Header = () => {
 
       {
         stateUser != null &&
-        <div style={{display:'flex'}}>
+        <div style={{ display: 'flex' }}>
           <div style={style.menuLibrary}>
             <Button variant="primary">
               My Library
             </Button>
           </div>
 
-          <div style={style.menuProfile}>
-            <img style={style.menuProfilePicture} src={'https://thispersondoesnotexist.com/image'} alt={'Profile'} />
-            <div style={style.menuProfileName}>
-              <p style={style.menuProfileFullName} className="m-0">{stateUser.user_first_name}</p>
-              <p style={style.menuProfileSubscriptionStatus} className="m-0">{stateUser.user_email}</p>
-            </div>
-          </div>
+          <Link to="/profile" style={{textDecoration:"none"}}>
+            <div style={style.menuProfile}>
+              <img style={style.menuProfilePicture} src={'https://thispersondoesnotexist.com/image'} alt={'Profile'} />
+              <div style={style.menuProfileName}>
+                <p style={style.menuProfileFullName} className="m-0">{stateUser.user_first_name}</p>
+                <p style={style.menuProfileSubscriptionStatus} className="m-0">{stateUser.user_email}</p>
+              </div>
+            </div></Link>
         </div>
       }
     </div>
@@ -84,7 +86,7 @@ const style = {
   menuSearch: {
     flex: 1,
     display: 'flex',
-    justifyContent:'flex-end',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     padding: '0px 24px'
   },

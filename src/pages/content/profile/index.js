@@ -2,6 +2,9 @@
 import React, { useEffect } from "react";
 import ProfileNav from "./profileNav";
 import MyLibrary from "./myLibrary";
+import EditProfile from "./editProfile";
+import { Route, Switch } from "react-router-dom";
+import SubscriptionPage from "./subscriptionPage";
 
 const Profile = () => {
 
@@ -10,11 +13,20 @@ const Profile = () => {
     }, [])
 
     return (
-        <div className="container" style={styles.container}>
+        <div className="container mt-4" style={styles.container}>
             <ProfileNav></ProfileNav>
             <div style={styles.profileContentWrapper}>
-                {/* <EditProfile></EditProfile> */}
-                <MyLibrary></MyLibrary>
+                <Switch>
+                    <Route exact path="/profile/my-library">
+                        <MyLibrary></MyLibrary>
+                    </Route>
+                    <Route exact path="/profile/edit-profile">
+                        <EditProfile></EditProfile>
+                    </Route>
+                    <Route exact path="/profile/subscription">
+                        <SubscriptionPage></SubscriptionPage>
+                    </Route>
+                </Switch>
             </div>
         </div>
     )
