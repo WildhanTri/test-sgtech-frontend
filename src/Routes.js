@@ -17,8 +17,9 @@ import { UserContext } from "./stores/userProvider";
 const Routes = () => {
 
     const { user } = useContext(UserContext)
-    const [stateUser, setStateUser] = useState(user)
+    const [stateUser, setStateUser] = user
 
+    console.log(stateUser)
     return (
         <Router>
             <Header></Header>
@@ -27,7 +28,7 @@ const Routes = () => {
                     <Route exact path="/"
                         render={() => {
                             return (
-                                !stateUser ? <Redirect to="/login" /> : null
+                                stateUser == null ? <Redirect to="/login" /> : <Redirect to="/home" />
                             )
                         }}
                     />
