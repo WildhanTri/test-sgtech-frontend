@@ -1,13 +1,25 @@
 
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { ListGroup } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../stores/userProvider";
 
 const ProfileNav = () => {
+
+    const { user } = useContext(UserContext)
+    const [stateUser, setStateUser] = user
 
     useEffect(() => {
 
     }, [])
+
+
+    const logOut = (e) => {
+        localStorage.removeItem("user")
+        localStorage.removeItem("token")
+        setStateUser(null)
+        document.location.href = "/";
+    }
 
     return (
         <div style={styles.container}>
@@ -16,7 +28,7 @@ const ProfileNav = () => {
                     <ListGroup.Item style={styles.listItem}>Edit Profil</ListGroup.Item></Link>
                 <Link to="/profile/my-library" style={{ color: "white", textDecoration: 'none' }}><ListGroup.Item style={styles.listItem}>My Library</ListGroup.Item></Link>
                 <Link to="/profile/subscription" style={{ color: "white", textDecoration: 'none' }}><ListGroup.Item style={styles.listItem}>Subscription</ListGroup.Item></Link>
-                <ListGroup.Item style={styles.listItem}>Log out</ListGroup.Item>
+                <ListGroup.Item style={styles.listItem} onClick={() => { logOut() }}>Log out</ListGroup.Item>
             </ListGroup>
         </div>
     )
@@ -34,7 +46,8 @@ const styles = {
         fontWeight: 'bold',
         padding: '16px 36px',
         fontSize: '18px',
-        letterSpacing: '2px'
+        letterSpacing: '2px',
+        cursor:'pointer'
     }
 }
 

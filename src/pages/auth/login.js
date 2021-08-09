@@ -46,12 +46,12 @@ const Login = () => {
         localStorage.setItem("token", resolve.object)
         userService.getProfile()
           .then((resolve) => {
-            setStateUser(resolve.user)
+            setStateUser(resolve.object)
+
             localStorage.setItem("user", JSON.stringify(resolve.object))
             history.push("/home")
           })
           .catch((error) => {
-            console.log(error)
             setMsgError(error)
           })
       })

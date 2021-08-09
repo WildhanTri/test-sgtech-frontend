@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import MovieCardBasic from "../../../components/movie-row/movieCardBasic";
 import UserService from "../../../services/UserService";
 
@@ -28,7 +29,9 @@ const MyLibrary = () => {
         {
           stateMovies.map((r, index) => {
             return (
-              <MovieCardBasic name={r.movie_name} thumbnail={r.movie_thumbnail_vertical_url}></MovieCardBasic>
+              <Link to={"/movies/" + r.movie_uuid}>
+                <MovieCardBasic name={r.movie_name} thumbnail={r.movie_thumbnail_vertical_url}></MovieCardBasic>
+              </Link>
             )
           })
         }
@@ -41,7 +44,7 @@ const styles = {
   container: {
     textAlign: 'left',
     padding: 48,
-    background:'white'
+    background: 'white'
   },
 }
 

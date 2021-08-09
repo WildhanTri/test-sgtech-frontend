@@ -13,15 +13,12 @@ const MovieRow = (props) => {
   const movieService = new MovieService();
 
   useEffect(() => {
-    console.log(props)
     getHomeRowDetail(props.uuid)
   }, [])
 
   const getHomeRowDetail = (home_row_uuid) => {
     movieService.getHomeRowMovies(home_row_uuid)
       .then((resolve) => {
-        console.log(home_row_uuid)
-        console.log(resolve)
         setStateMovies(resolve.object)
       })
       .catch((error) => {

@@ -1,5 +1,5 @@
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { UserContext } from "../stores/userProvider";
 import { Button, Nav, Form } from 'react-bootstrap';
@@ -10,6 +10,10 @@ const Header = () => {
   const { user } = useContext(UserContext)
 
   const [stateUser, setStateUser] = user
+
+  useEffect(() => {
+      // setStateUser({...stateUser, user_email:'djaidjasij@gmail.com  '})
+  }, [])
 
   return (
     <div style={style.container}>
