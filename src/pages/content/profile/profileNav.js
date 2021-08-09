@@ -25,13 +25,16 @@ const ProfileNav = () => {
 const styles = {
     container: {
         minWidth: 300,
-        paddingTop: 100,
-        background: "#1B1B1B"
+        paddingTop: 40,
+        background: "#1B1B1B",
     },
     listItem: {
         background: "#252525",
         color: 'white',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        padding: '16px 36px',
+        fontSize: '18px',
+        letterSpacing: '2px'
     }
 }
 

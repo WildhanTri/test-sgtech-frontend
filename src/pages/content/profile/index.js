@@ -13,7 +13,7 @@ const Profile = () => {
     }, [])
 
     return (
-        <div className="container mt-4" style={styles.container}>
+        <div className="container" style={styles.container}>
             <ProfileNav></ProfileNav>
             <div style={styles.profileContentWrapper}>
                 <Switch>
