@@ -14,21 +14,21 @@ const Header = () => {
   return (
     <div style={style.container}>
       <div style={style.logoWrapper}>
-        <Link to="/home" style={{color:"#E50914"}}>
-          <span style={{fontFamily:"bebas neue"}}>INDOFLIX</span>
+        <Link to="/home" style={{ color: "#E50914", fontFamily: "bebas neue" }}>
+          INDOFLIX
         </Link>
       </div>
       <div style={style.menuNav}>
         <Nav defaultActiveKey="/home" as="ul">
           <Nav.Item as="li" style={style.menuNavItem}>
-            <Nav.Link style={{color:'white'}} href="/movies">Movies</Nav.Link>
+            <Nav.Link style={{ color: 'white' }} href="/movies">Movies</Nav.Link>
           </Nav.Item>
         </Nav>
       </div>
       <div style={style.menuSearch}>
         <Form style={{ maxWidth: '512px', width: '100%' }}>
           <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Control type="text" placeholder="Cari film / serial..." />
+            <Form.Control type="text" placeholder="Cari film..." />
           </Form.Group>
         </Form>
       </div>
@@ -44,7 +44,7 @@ const Header = () => {
             </Link>
           </div>
 
-          <Link to="/profile/edit-profile" style={{ textDecoration: "none", color:'white' }}>
+          <Link to="/profile/edit-profile" style={{ textDecoration: "none", color: 'white' }}>
             <div style={style.menuProfile}>
               <img style={style.menuProfilePicture} src={'https://thispersondoesnotexist.com/image'} alt={'Profile'} />
               <div style={style.menuProfileName}>
@@ -90,8 +90,8 @@ const style = {
   },
   menuNavItem: {
     marginRight: 24,
-    color:'white',
-    fontWeight:'bold'
+    color: 'white',
+    fontWeight: 'bold'
   },
   menuLibrary: {
     display: 'flex',

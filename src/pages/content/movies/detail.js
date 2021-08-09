@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import MovieRow from "../../../components/movie-row/movieRow";
 import MovieService from "../../../services/MovieService";
 import { Button, Nav, Form } from 'react-bootstrap';
+import { currencyFormat } from "../../../utils/util";
 
 const MovieDetail = () => {
 
@@ -51,7 +52,7 @@ const MovieDetail = () => {
                             {stateMovie.movie_synopsis}
                         </p>
                         <div className="text-end btn-">
-                            <Button variant="primary">Beli Rp. {stateMovie.movie_price}</Button>
+                            <Button variant="primary">Beli { currencyFormat(stateMovie.movie_price) }</Button>
                         </div>
                     </div>
                     <div className="mb-4" style={styles.movieDescriptionWrapper}>
