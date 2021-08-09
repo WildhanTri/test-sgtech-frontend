@@ -82,7 +82,7 @@ const EditProfile = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="profileGender">
           <Form.Label className="fw-bold">Jenis kelamin</Form.Label>
-          <Form.Select type="date" placeholder="Tanggal Lahir"
+          <Form.Select
             onChange={newFields => {
               inputOnchangeHandler(newFields)
             }} >

@@ -1,7 +1,8 @@
 
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Row, Col, Form, Card, Button } from 'react-bootstrap';
+import UserService from "../../services/UserService";
 
 const Register = () => {
 
@@ -9,6 +10,14 @@ const Register = () => {
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [birthday, setBirthday] = useState("")
+  const [gender, setGender] = useState("")
+
+  const [msgError, setMsgError] = useState("")
+
+  const history = useHistory();
+
+  const userService = new UserService()
 
   useEffect(() => {
 
@@ -28,12 +37,43 @@ const Register = () => {
       case "registerPassword":
         setPassword(event.target.value)
         break
+      case "registerBirthday":
+        setBirthday(event.target.value)
+        break
+      case "registerGender":
+        setGender(event.target.value)
+        break
       default:
         break
     }
   }
 
   const onRegister = () => {
+    var user = {
+      user_email: email,
+      user_first_name: firstName,
+      user_last_name: lastName,
+      user_password: password,
+      user_birthday: birthday,
+      user_gender: gender
+    }
+
+    userService.register(user)
+      .then((resolve) => {
+        localStorage.setItem("token", resolve.object)
+        userService.getProfile()
+          .then((resolve) => {
+            localStorage.setItem("user", JSON.stringify(resolve.object))
+            history.push("/home")
+          })
+          .catch((error) => {
+            setMsgError(error)
+          })
+
+      })
+      .catch((error) => {
+        setMsgError(error)
+      })
     console.log(`${firstName} ${lastName}`)
     console.log(email)
     console.log(password)
@@ -92,6 +132,24 @@ const Register = () => {
                         inputOnchangeHandler(newFields)
                       }} />
                   </Form.Group>
+                  <Form.Group className="mb-3" controlId="registerBirthday">
+                    <Form.Label>Tanggal Lahir</Form.Label>
+                    <Form.Control type="date" placeholder="Tanggal Lahir"
+                      onChange={newFields => {
+                        inputOnchangeHandler(newFields)
+                      }} />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="registerGender">
+                    <Form.Label>Jenis Kelamin</Form.Label>
+                    <Form.Select
+                      onChange={newFields => {
+                        inputOnchangeHandler(newFields)
+                      }} >
+                      <option selected disabled>Pilih jenis kelamin anda</option>
+                      <option value="M">Laki-laki</option>
+                      <option value="F">Wanita</option>
+                    </Form.Select>
+                  </Form.Group>
                 </Form>
 
                 <div className="text-center">
@@ -101,6 +159,11 @@ const Register = () => {
                     </Button>
                   </div>
 
+                  {msgError != null && msgError !== "" &&
+                    <div className="mb-4 text-center" style={{ color: 'red' }}>
+                      {msgError}
+                    </div>
+                  }
                   <div>
                     <span className="me-1">
                       Sudah punya akun?

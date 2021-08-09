@@ -5,15 +5,17 @@ import { BACKEND_ENDPOINT } from "../constants/constants";
 
 export default class UserService extends React.Component {
 
-    register = (user_email, user_first_name, user_last_name, user_password) => {
+    register = (user) => {
         var request = {
-            user_email: user_email,
-            user_first_name: user_first_name,
-            user_last_name: user_last_name,
-            user_password: user_password
+            user_email: user.user_email,
+            user_first_name: user.user_first_name,
+            user_last_name: user.user_last_name,
+            user_password: user.user_password,
+            user_birthday: user.user_birthday,
+            user_gender: user.user_gender
         }
         return new Promise((resolve, reject) => {
-            axios.post(BACKEND_ENDPOINT + "/v1/user/register", request)
+            axios.post(BACKEND_ENDPOINT + "/v1/user/registration", request)
                 .then(
                     (response) => {
                         resolve(response.data)
