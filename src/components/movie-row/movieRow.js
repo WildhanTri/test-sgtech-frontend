@@ -83,7 +83,9 @@ const MovieRow = (props) => {
                 stateMovies != null &&
                 props.rowType === "BASIC" && stateMovies.map((r, index) => {
                   return (
-                    <MovieCardBasic name={r.movie_title} thumbnail={r.movie_thumbnail_vertical_url}></MovieCardBasic>
+                    <Link to={"movies/" + r.movie_uuid}>
+                      <MovieCardBasic name={r.movie_title} thumbnail={r.movie_thumbnail_vertical_url}></MovieCardBasic>
+                    </Link>
                   )
                 })
               }
