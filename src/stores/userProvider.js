@@ -12,7 +12,6 @@ export const UserProvider = props => {
     }
     const iniateUser = currentUser ? currentUser : null
     const [user, setUser] = useState(iniateUser);
-
     return (
         <UserContext.Provider
             value={

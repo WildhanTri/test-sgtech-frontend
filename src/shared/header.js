@@ -1,5 +1,5 @@
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { UserContext } from "../stores/userProvider";
 import { Button, Nav, Form } from 'react-bootstrap';
@@ -9,6 +9,9 @@ const Header = () => {
 
   const { user } = useContext(UserContext)
 
+  const [stateUser, setStateUser] = user
+
+  console.log(stateUser)
   return (
     <div style={style.container}>
       <div style={style.logoWrapper}>
@@ -28,26 +31,31 @@ const Header = () => {
         </Nav>
       </div>
       <div style={style.menuSearch}>
-        <Form style={{ width: '100%' }}>
+        <Form style={{ maxWidth:'512px', width: '100%' }}>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Control type="text" placeholder="Cari film / serial..." />
           </Form.Group>
         </Form>
       </div>
 
-      <div style={style.menuLibrary}>
-        <Button variant="primary">
-          My Library
-        </Button>
-      </div>
+      {
+        stateUser != null &&
+        <div style={{display:'flex'}}>
+          <div style={style.menuLibrary}>
+            <Button variant="primary">
+              My Library
+            </Button>
+          </div>
 
-      <div style={style.menuProfile}>
-        <img style={style.menuProfilePicture} src={'https://thispersondoesnotexist.com/image'} alt={'Profile'} />
-        <div style={style.menuProfileName}>
-          <p style={style.menuProfileFullName} className="m-0">John Doe</p>
-          <p style={style.menuProfileSubscriptionStatus} className="m-0">john.doe@gmail.com</p>
+          <div style={style.menuProfile}>
+            <img style={style.menuProfilePicture} src={'https://thispersondoesnotexist.com/image'} alt={'Profile'} />
+            <div style={style.menuProfileName}>
+              <p style={style.menuProfileFullName} className="m-0">{stateUser.user_first_name}</p>
+              <p style={style.menuProfileSubscriptionStatus} className="m-0">{stateUser.user_email}</p>
+            </div>
+          </div>
         </div>
-      </div>
+      }
     </div>
   )
 }
@@ -78,7 +86,9 @@ const style = {
   menuSearch: {
     flex: 1,
     display: 'flex',
+    justifyContent:'flex-end',
     alignItems: 'center',
+    padding: '0px 24px'
   },
   menuNavItem: {
     marginRight: 24
@@ -92,7 +102,7 @@ const style = {
     display: 'flex',
     alignItems: 'center',
     padding: '8px 24px',
-    width:240
+    width: 240
   },
   menuProfilePicture: {
     borderRadius: '50%',

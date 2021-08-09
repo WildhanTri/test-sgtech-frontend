@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
     BrowserRouter as Router,
     Switch,
@@ -11,16 +11,16 @@ import Home from "./pages/content/home";
 import Profile from "./pages/content/profile";
 import MyLibrary from "./pages/content/profile/myLibrary";
 import Header from "./shared/header";
+import { UserContext } from "./stores/userProvider";
 
 const Routes = () => {
 
-    const [stateUser, setStateUser] = useState(true)
+    const { user } = useContext(UserContext)
+    const [stateUser, setStateUser] = useState(user)
 
     return (
         <Router>
-            {
-                stateUser && <Header></Header>
-            }
+            <Header></Header>
             <div style={{ paddingTop: 64 }}>
                 <Switch>
                     <Route exact path="/"
