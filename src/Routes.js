@@ -9,6 +9,7 @@ import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Home from "./pages/content/home";
 import Profile from "./pages/content/profile";
+import MyLibrary from "./pages/content/profile/myLibrary";
 import Header from "./shared/header";
 
 const Routes = () => {

@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Form, Card, Button } from 'react-bootstrap';
 import ProfileNav from "./profileNav";
 import EditProfile from "./editProfile";
+import MyLibrary from "./myLibrary";
 
 const Profile = () => {
 
@@ -15,7 +16,8 @@ const Profile = () => {
         <div className="container" style={styles.container}>
             <ProfileNav></ProfileNav>
             <div style={styles.profileContentWrapper}>
-                <EditProfile></EditProfile>
+                {/* <EditProfile></EditProfile> */}
+                <MyLibrary></MyLibrary>
             </div>
         </div>
     )

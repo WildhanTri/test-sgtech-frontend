@@ -21,6 +21,7 @@ const styles = {
         display: 'block',
         flex: 'none',
         marginRight: 10,
+        marginBottom: 8,
         width: 320,
         height: 180,
         borderRadius: '20px'

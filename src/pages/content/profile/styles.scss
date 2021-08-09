@@ -1,0 +1,10 @@
+.sadfg {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+
+.sadfg::after {
+    content: "";
+    flex: auto;
+}
