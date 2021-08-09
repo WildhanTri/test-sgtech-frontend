@@ -80,13 +80,15 @@ const Register = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="container-fluid" style={styles.container}>
       <div className="row">
         <div className="col-md-2 col-lg-3"></div>
         <div className="col-md-8 col-lg-6">
           <div style={styles.wrapper}>
             <div style={styles.wrapperLogo}>
-              <h1>Logo</h1>
+              <h1 style={{ color: "#E50914" }}>
+                <span style={{ fontFamily: "bebas neue", textDecoration: 'underline' }}>INDOFLIX</span>
+              </h1>
             </div>
             <Card style={styles.wrapperCard}>
               <Card.Body>
@@ -185,7 +187,8 @@ const Register = () => {
 
 const styles = {
   container: {
-    textAlign: 'left'
+    textAlign: 'left',
+    minHeight: '95vh'
   },
   wrapper: {
     padding: "36px 24px",

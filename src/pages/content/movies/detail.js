@@ -29,12 +29,12 @@ const MovieDetail = () => {
 
 
     return (
-        <div className="container mt-4">
+        <div style={styles.container} className="container mt-4">
             <div className="row">
                 <div className="col-sm-4 text-center">
                     <img src={stateMovie.movie_thumbnail_vertical_url} alt={stateMovie.movie_title} className="w-100"></img>
                 </div>
-                <div className="col-sm-8 text-start border" style={styles.movieContent}>
+                <div className="col-sm-8 text-start" style={styles.movieContent}>
                     <div className="mb-4" style={styles.movieHeader}>
                         <div style={styles.movieTitleWrapper}>
                             <h2 style={styles.movieTitle}>{stateMovie.movie_title}</h2>
@@ -56,7 +56,7 @@ const MovieDetail = () => {
                     </div>
                     <div className="mb-4" style={styles.movieDescriptionWrapper}>
                         <h3 className="mb-4">
-                            Trailer
+                            <b>Trailer</b>
                         </h3>
                         <div className="text-start">
                             <iframe className="w-100" height="480" src="https://www.youtube.com/embed/tgbNymZ7vqY">
@@ -71,6 +71,8 @@ const MovieDetail = () => {
 
 const styles = {
     container: {
+        background: "#1C1C1C",
+        color: "white",
     },
     movieContent: {
         padding: '24px 36px'
@@ -87,15 +89,16 @@ const styles = {
         alignItems: 'center'
     },
     movieClassificationContentWrapper: {
-        border: "4px solid black",
-        padding: "4px 2px",
+        border: "4px solid white",
+        color: "white",
+        padding: "4px 8px",
         fontSize: 36,
         fontWeight: 'bold',
         borderRadius: 4,
         marginBottom: 16
     },
     movieTitle: {
-
+        fontWeight: "bold"
     },
     movieYear: {
         color: 'grey'

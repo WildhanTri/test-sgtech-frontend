@@ -35,11 +35,13 @@ const Profile = () => {
 const styles = {
     container: {
         display: 'flex',
-        height: "100%"
+        minHeight:'95vh'
     },
     profileContentWrapper: {
         flex: 1,
+        display:'contents',
         border: "1px solid black",
+        background:'white',
         height: "100%"
     }
 }

@@ -31,7 +31,7 @@ const Movies = () => {
       {
         stateMovies.map((movie, index) => {
           return (
-            <div className="card mb-1">
+            <div className="card mb-1" style={{ background: "#1c1c1c", color:'#cecece' }}>
               <div className="card-body">
                 <div className="row">
                   <div className="col-sm-3">
@@ -44,7 +44,7 @@ const Movies = () => {
                         {movie.movie_synopsis}
                       </div>
                       <div className="w-100 text-end">
-                        <Link to={"/movies/"+movie.movie_uuid}>
+                        <Link to={"/movies/" + movie.movie_uuid}>
                           <button className="btn btn-primary me-2">Detail</button>
                         </Link>
                         <button className="btn btn-primary">Rp. {movie.movie_price}</button>

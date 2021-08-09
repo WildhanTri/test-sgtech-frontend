@@ -63,10 +63,10 @@ const MovieRow = (props) => {
       {
         props.rowType !== "BANNER" &&
         <div style={styles.rowMovies}>
-          <h3>
+          <h4 style={{color:'white', fontWeight:'bold'}}>
             {props.name}
-          </h3>
-          <div style={styles.listMovies}>
+          </h4>
+          <div className="scrollbar" style={styles.listMovies}>
             <ul style={styles.listMoviesUl}>
               {
                 stateMovies != null &&
@@ -100,6 +100,7 @@ const MovieRow = (props) => {
 const styles = {
   container: {
     marginTop: 0,
+    marginBottom:12,
     padding: "4px 0px",
     textAlign: 'left'
   },

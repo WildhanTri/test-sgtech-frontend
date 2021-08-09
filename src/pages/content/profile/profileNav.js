@@ -12,10 +12,11 @@ const ProfileNav = () => {
     return (
         <div style={styles.container}>
             <ListGroup>
-                <ListGroup.Item><Link to="/profile/edit-profile">Edit Profil</Link></ListGroup.Item>
-                <ListGroup.Item><Link to="/profile/my-library">My Library</Link></ListGroup.Item>
-                <ListGroup.Item><Link to="/profile/subscription">Subscription</Link></ListGroup.Item>
-                <ListGroup.Item>Log out</ListGroup.Item>
+                <Link to="/profile/edit-profile" style={{ color: "white", textDecoration: 'none' }}>
+                    <ListGroup.Item style={styles.listItem}>Edit Profil</ListGroup.Item></Link>
+                <Link to="/profile/my-library" style={{ color: "white", textDecoration: 'none' }}><ListGroup.Item style={styles.listItem}>My Library</ListGroup.Item></Link>
+                <Link to="/profile/subscription" style={{ color: "white", textDecoration: 'none' }}><ListGroup.Item style={styles.listItem}>Subscription</ListGroup.Item></Link>
+                <ListGroup.Item style={styles.listItem}>Log out</ListGroup.Item>
             </ListGroup>
         </div>
     )
@@ -23,10 +24,14 @@ const ProfileNav = () => {
 
 const styles = {
     container: {
-        minWidth:300,
-        paddingTop:100,
-        border:"1px solid grey",
-        background:"#1B1B1B"
+        minWidth: 300,
+        paddingTop: 100,
+        background: "#1B1B1B"
+    },
+    listItem: {
+        background: "#252525",
+        color: 'white',
+        fontWeight: 'bold'
     }
 }
 

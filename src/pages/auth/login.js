@@ -61,31 +61,33 @@ const Login = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="container-fluid" style={styles.container}>
       <div className="row">
         <div className="col-md-2 col-lg-3"></div>
         <div className="col-md-8 col-lg-6">
           <div style={styles.wrapper}>
             <div style={styles.wrapperLogo}>
-              <h1>Logo</h1>
+              <h1 style={{ color: "#E50914" }}>
+                <span style={{ fontFamily: "bebas neue", textDecoration: 'underline' }}>INDOFLIX</span>
+              </h1>
             </div>
             <Card style={styles.wrapperCard}>
               <Card.Body>
                 <div className="mb-4">
                   <div className="d-flex">
-                    <h1>Login</h1>
+                    <h1 style={{ fontWeight: 'bold' }}>Login</h1>
                   </div>
                 </div>
-                <Form className="mb-4">
+                <Form className="mb-4" onSubmit={() => onLogin()}>
                   <Form.Group className="mb-3" controlId="loginEmail">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label className="fw-bold">Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email"
                       onChange={newFields => {
                         inputOnchangeHandler(newFields)
                       }} />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="loginPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label className="fw-bold">Password</Form.Label>
                     <Form.Control type="password" placeholder="Password"
                       onChange={newFields => {
                         inputOnchangeHandler(newFields)
@@ -105,9 +107,9 @@ const Login = () => {
                     </div>
                   }
                   <div className="mb-4">
-                    <Link to="#" className="mb-4 btn-action-sub">
+                    {/* <Link to="#" className="mb-4 btn-action-sub">
                       Forgot Password?
-                    </Link>
+                    </Link> */}
                   </div>
                   <div>
                     <span className="me-1">
@@ -131,7 +133,8 @@ const Login = () => {
 
 const styles = {
   container: {
-    textAlign: 'left'
+    textAlign: 'left',
+    minHeight: '95vh'
   },
   wrapper: {
     padding: "36px 24px",

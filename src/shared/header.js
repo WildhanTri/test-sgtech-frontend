@@ -21,10 +21,7 @@ const Header = () => {
       <div style={style.menuNav}>
         <Nav defaultActiveKey="/home" as="ul">
           <Nav.Item as="li" style={style.menuNavItem}>
-            <Nav.Link href="/home">StreamPlus</Nav.Link>
-          </Nav.Item>
-          <Nav.Item as="li" style={style.menuNavItem}>
-            <Nav.Link href="/movies">Movies</Nav.Link>
+            <Nav.Link style={{color:'white'}} href="/movies">Movies</Nav.Link>
           </Nav.Item>
         </Nav>
       </div>
@@ -47,7 +44,7 @@ const Header = () => {
             </Link>
           </div>
 
-          <Link to="/profile" style={{ textDecoration: "none" }}>
+          <Link to="/profile/edit-profile" style={{ textDecoration: "none", color:'white' }}>
             <div style={style.menuProfile}>
               <img style={style.menuProfilePicture} src={'https://thispersondoesnotexist.com/image'} alt={'Profile'} />
               <div style={style.menuProfileName}>
@@ -64,10 +61,10 @@ const Header = () => {
 const style = {
   container: {
     display: 'flex',
-    boxShadow: '1px 2px 0px 0px #e5e5e5',
+    // boxShadow: '1px 2px 0px 0px #e5e5e5',
     position: 'fixed',
     width: '100%',
-    background: 'white',
+    background: '#1c1c1c',
     zIndex: '1'
   },
 
@@ -92,7 +89,9 @@ const style = {
     padding: '0px 24px'
   },
   menuNavItem: {
-    marginRight: 24
+    marginRight: 24,
+    color:'white',
+    fontWeight:'bold'
   },
   menuLibrary: {
     display: 'flex',

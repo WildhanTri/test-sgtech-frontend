@@ -40,7 +40,8 @@ const MyLibrary = () => {
 const styles = {
   container: {
     textAlign: 'left',
-    padding: 48
+    padding: 48,
+    background:'white'
   },
 }
 
