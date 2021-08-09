@@ -13,7 +13,7 @@ export default class UserService extends React.Component {
             user_password: user_password
         }
         return new Promise((resolve, reject) => {
-            axios.post(BACKEND_ENDPOINT + "/api/register", request)
+            axios.post(BACKEND_ENDPOINT + "/v1/user/register", request)
                 .then(
                     (response) => {
                         resolve(response.data)
@@ -22,8 +22,8 @@ export default class UserService extends React.Component {
                     (error) => {
                         const errorMessage = JSON.parse(error.request.response)
                         try {
-                            if (errorMessage.error)
-                                reject(errorMessage.error)
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
                         } catch (e) {
                             reject(error)
                         }
@@ -38,7 +38,7 @@ export default class UserService extends React.Component {
             user_password: user_password
         }
         return new Promise((resolve, reject) => {
-            axios.post(BACKEND_ENDPOINT + "/api/login", request)
+            axios.post(BACKEND_ENDPOINT + "/v1/user/login", request)
                 .then(
                     (response) => {
                         resolve(response.data)
@@ -47,8 +47,31 @@ export default class UserService extends React.Component {
                     (error) => {
                         const errorMessage = JSON.parse(error.request.response)
                         try {
-                            if (errorMessage.error)
-                                reject(errorMessage.error)
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
+                        } catch (e) {
+                            reject(error)
+                        }
+                    }
+                )
+        })
+    }
+
+
+    getProfile = () => {
+
+        return new Promise((resolve, reject) => {
+            axios.get(BACKEND_ENDPOINT + "/v1/user/profile", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+                .then(
+                    (response) => {
+                        resolve(response.data)
+                    }
+                ).catch(
+                    (error) => {
+                        const errorMessage = JSON.parse(error.request.response)
+                        try {
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
                         } catch (e) {
                             reject(error)
                         }
@@ -67,17 +90,17 @@ export default class UserService extends React.Component {
         }
 
         return new Promise((resolve, reject) => {
-            axios.patch(BACKEND_ENDPOINT + "/api/user/profile", request, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            axios.patch(BACKEND_ENDPOINT + "/v1/user/profile", request, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
-                        resolve(response)
+                        resolve(response.data)
                     }
                 ).catch(
                     (error) => {
                         const errorMessage = JSON.parse(error.request.response)
                         try {
-                            if (errorMessage.error)
-                                reject(errorMessage.error)
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
                         } catch (e) {
                             reject(error)
                         }
@@ -93,17 +116,17 @@ export default class UserService extends React.Component {
         }
 
         return new Promise((resolve, reject) => {
-            axios.patch(BACKEND_ENDPOINT + "/api/change-password", request, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            axios.patch(BACKEND_ENDPOINT + "/v1/user/change-password", request, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
-                        resolve(response)
+                        resolve(response.data)
                     }
                 ).catch(
                     (error) => {
                         const errorMessage = JSON.parse(error.request.response)
                         try {
-                            if (errorMessage.error)
-                                reject(errorMessage.error)
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
                         } catch (e) {
                             reject(error)
                         }
@@ -121,17 +144,17 @@ export default class UserService extends React.Component {
         }
 
         return new Promise((resolve, reject) => {
-            axios.patch(BACKEND_ENDPOINT + "/api/forgotPassword", request, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            axios.patch(BACKEND_ENDPOINT + "/v1/user/forgotPassword", request, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
-                        resolve(response)
+                        resolve(response.data)
                     }
                 ).catch(
                     (error) => {
                         const errorMessage = JSON.parse(error.request.response)
                         try {
-                            if (errorMessage.error)
-                                reject(errorMessage.error)
+                            if (errorMessage.message)
+                                reject(errorMessage.message)
                         } catch (e) {
                             reject(error)
                         }

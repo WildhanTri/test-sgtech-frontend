@@ -4,13 +4,19 @@ import { Link, useHistory } from 'react-router-dom';
 import { Form, Card, Button } from 'react-bootstrap';
 
 import './auth.scss';
+import UserService from "../../services/UserService";
 
 const Login = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  
+
+  var [msgError, setMsgError] = useState("")
+
   const history = useHistory();
+
+  const userService = new UserService();
+
 
   useEffect(() => {
 
@@ -31,9 +37,23 @@ const Login = () => {
   }
 
   const onLogin = () => {
-    console.log(email)
-    console.log(password)
-    history.push("/home")
+    userService.login(email, password)
+      .then((resolve) => {
+        localStorage.setItem("token", resolve.object)
+        userService.getProfile()
+          .then((resolve) => {
+            console.log(resolve)
+            localStorage.setItem("user", JSON.stringify(resolve.object))
+            history.push("/home")
+          })
+          .catch((error) => {
+            console.log(error)
+            setMsgError(error)
+          })
+      })
+      .catch((error) => {
+        setMsgError(error)
+      })
   };
 
   return (
@@ -75,6 +95,11 @@ const Login = () => {
                       Login
                     </Button>
                   </div>
+                  {msgError != null && msgError !== "" &&
+                    <div className="mb-4 text-center" style={{ color: 'red' }}>
+                      {msgError}
+                    </div>
+                  }
                   <div className="mb-4">
                     <Link to="#" className="mb-4 btn-action-sub">
                       Forgot Password?

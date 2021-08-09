@@ -4,7 +4,12 @@ export const UserContext = createContext();
 
 export const UserProvider = props => {
 
-    const currentUser = JSON.parse(localStorage.getItem("user"))
+    var currentUser = null
+    try {
+        currentUser = JSON.parse(localStorage.getItem("user"))
+    } catch (e) {
+
+    }
     const iniateUser = currentUser ? currentUser : null
     const [user, setUser] = useState(iniateUser);
 
