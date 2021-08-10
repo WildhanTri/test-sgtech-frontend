@@ -44,10 +44,10 @@ const Movies = () => {
             <div className="card mb-1" style={{ background: "#1c1c1c", color: '#cecece' }}>
               <div className="card-body">
                 <div className="row">
-                  <div className="col-sm-3">
+                  <div className="col-lg-2 col-md-3 col-sm-4">
                     <img className="w-100" style={{ height: 280, objectFit: 'cover' }} src={movie.movie_thumbnail_vertical_url} alt={movie.movie_title}></img>
                   </div>
-                  <div className="col-sm-9">
+                  <div className="col-lg-10 col-md-9 col-sm-8">
                     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                       <div className="w-100 text-start flex-grow-1">
                         <h2>{movie.movie_title}</h2>
