@@ -11,6 +11,7 @@ import './styles.scss'
 const Movies = () => {
 
   const [stateMovies, setStateMovies] = useState([])
+  const [stateMoviesLoading, setStateMoviesLoading] = useState(false)
   const movieService = new MovieService();
 
   useEffect(() => {
@@ -18,13 +19,11 @@ const Movies = () => {
   }, [])
 
   const getMovies = () => {
+    setStateMoviesLoading(true)
     movieService.getMovie()
       .then((resolve) => {
         setStateMovies(resolve.object)
-
-        console.log(stateMovies)
-        console.log(resolve)
-        console.log(stateMovies)
+        setStateMoviesLoading(false)
       })
   }
 
@@ -32,9 +31,17 @@ const Movies = () => {
   return (
     <div style={styles.container} className="container mt-4">
       {
-        stateMovies.map((movie, index) => {
+        stateMoviesLoading &&
+        <div className="w-100 h-100 d-flex align-items-center justify-content-center">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      }
+      {
+        !stateMoviesLoading && stateMovies.map((movie, index) => {
           return (
-            <div className="card mb-1" style={{ background: "#1c1c1c", color:'#cecece' }}>
+            <div className="card mb-1" style={{ background: "#1c1c1c", color: '#cecece' }}>
               <div className="card-body">
                 <div className="row">
                   <div className="col-sm-3">

@@ -10,6 +10,7 @@ const MovieDetail = () => {
 
   const movieService = new MovieService();
   const [stateMovie, setStateMovie] = useState({})
+  const [stateMovieLoading, setStateMovieLoading] = useState(false)
   const [stateMovieBuyLoading, setMovieBuyLoading] = useState(false)
 
   // const [state, setStateMovie] = useState({})
@@ -31,13 +32,14 @@ const MovieDetail = () => {
   }, [])
 
   const getMovieDetail = (movie_uuid) => {
+    setStateMovieLoading(true)
     movieService.getMovieDetail(movie_uuid)
       .then((resolve) => {
         setStateMovie(resolve.object)
-        console.log(stateMovie)
+        setStateMovieLoading(false)
       })
       .catch((error) => {
-
+        setStateMovieLoading(false)
       })
   }
 
@@ -62,48 +64,60 @@ const MovieDetail = () => {
 
   return (
     <div style={styles.container} className="container mt-4">
-      <div className="row">
-        <div className="col-sm-4 text-center">
-          <img src={stateMovie.movie_thumbnail_vertical_url} alt={stateMovie.movie_title} className="w-100"></img>
+
+      {
+        stateMovieLoading &&
+        <div className="w-100 h-100 d-flex align-items-center justify-content-center pt-5 pb-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
         </div>
-        <div className="col-sm-8 text-start" style={styles.movieContent}>
-          <div className="mb-4" style={styles.movieHeader}>
-            <div style={styles.movieTitleWrapper}>
-              <h2 style={styles.movieTitle}>{stateMovie.movie_title}</h2>
-              <h6 style={styles.movieYear}>{stateMovie.movie_year}</h6>
+      }
+      {
+        !stateMovieLoading &&
+        <div className="row">
+          <div className="col-sm-4 text-center">
+            <img src={stateMovie.movie_thumbnail_vertical_url} alt={stateMovie.movie_title} className="w-100"></img>
+          </div>
+          <div className="col-sm-8 text-start" style={styles.movieContent}>
+            <div className="mb-4" style={styles.movieHeader}>
+              <div style={styles.movieTitleWrapper}>
+                <h2 style={styles.movieTitle}>{stateMovie.movie_title}</h2>
+                <h6 style={styles.movieYear}>{stateMovie.movie_year}</h6>
+              </div>
+              <div style={styles.movieClassificationWrapper}>
+                <div style={styles.movieClassificationContentWrapper}>
+                  {stateMovie.movie_classification_name}
+                </div>
+              </div>
             </div>
-            <div style={styles.movieClassificationWrapper}>
-              <div style={styles.movieClassificationContentWrapper}>
-                {stateMovie.movie_classification_name}
+            <div className="mb-4" style={styles.movieDescriptionWrapper}>
+              <p className="mb-4">
+                {stateMovie.movie_synopsis}
+              </p>
+              <div className="text-end btn-">
+                {
+                  stateMovie.movie_is_bought === 1 &&
+                  <Button variant="primary" onClick={handleWatchMovieShow}>Tonton</Button>
+                }
+                {
+                  stateMovie.movie_is_bought === 0 &&
+                  <Button variant="primary" onClick={handleShow}>Beli {currencyFormat(stateMovie.movie_price)}</Button>
+                }
+              </div>
+            </div>
+            <div className="mb-4" style={styles.movieDescriptionWrapper}>
+              <h3 className="mb-4">
+                <b>Trailer</b>
+              </h3>
+              <div className="text-start">
+                <iframe title={stateMovie.movie_title} className="w-100" height="480" src={stateMovie.movie_trailer_url} allowFullScreen>
+                </iframe>
               </div>
             </div>
           </div>
-          <div className="mb-4" style={styles.movieDescriptionWrapper}>
-            <p className="mb-4">
-              {stateMovie.movie_synopsis}
-            </p>
-            <div className="text-end btn-">
-              {
-                stateMovie.movie_is_bought === 1 &&
-                <Button variant="primary" onClick={handleWatchMovieShow}>Tonton</Button>
-              }
-              {
-                stateMovie.movie_is_bought === 0 &&
-                <Button variant="primary" onClick={handleShow}>Beli {currencyFormat(stateMovie.movie_price)}</Button>
-              }
-            </div>
-          </div>
-          <div className="mb-4" style={styles.movieDescriptionWrapper}>
-            <h3 className="mb-4">
-              <b>Trailer</b>
-            </h3>
-            <div className="text-start">
-              <iframe title={stateMovie.movie_title} className="w-100" height="480" src={stateMovie.movie_trailer_url} allowFullScreen>
-              </iframe>
-            </div>
-          </div>
         </div>
-      </div>
+      }
 
       <Modal show={show} onHide={handleClose} backdrop="static">
         <Modal.Header closeButton>
@@ -149,6 +163,7 @@ const styles = {
   container: {
     background: "#1C1C1C",
     color: "white",
+    minHeight: "50vh"
   },
   movieContent: {
     padding: '24px 36px'
@@ -178,7 +193,7 @@ const styles = {
   },
   movieYear: {
     color: 'grey'
-  }
+  },
 }
 
 export default MovieDetail;
