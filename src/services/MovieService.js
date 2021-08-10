@@ -5,9 +5,20 @@ import { BACKEND_ENDPOINT } from "../constants/constants";
 
 export default class MovieService extends React.Component {
 
-    getMovie = () => {
+    getMovie = (query, page, offset) => {
         return new Promise((resolve, reject) => {
-            axios.get(BACKEND_ENDPOINT + "/v1/movie", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            var url = BACKEND_ENDPOINT + "/v1/movie?"
+            if (query) {
+                url += "&q=" + query
+            }
+            if (page) {
+                url += "&page=" + page
+            }
+            if (offset) {
+                url += "&offset=" + offset
+            }
+
+            axios.get(url, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
                         resolve(response.data)
@@ -25,7 +36,7 @@ export default class MovieService extends React.Component {
                 )
         })
     }
-    
+
     getMovieDetail = (movie_uuid) => {
         return new Promise((resolve, reject) => {
             axios.get(BACKEND_ENDPOINT + "/v1/movie/" + movie_uuid, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
@@ -46,7 +57,7 @@ export default class MovieService extends React.Component {
                 )
         })
     }
-    
+
     buyMovie = (movie_uuid) => {
         return new Promise((resolve, reject) => {
             axios.post(BACKEND_ENDPOINT + "/v1/movie/" + movie_uuid + "/buy", {}, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
@@ -67,7 +78,7 @@ export default class MovieService extends React.Component {
                 )
         })
     }
-    
+
     getHomeRow = () => {
         return new Promise((resolve, reject) => {
             axios.get(BACKEND_ENDPOINT + "/v1/home", { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
@@ -89,10 +100,10 @@ export default class MovieService extends React.Component {
                 )
         })
     }
-    
+
     getHomeRowMovies = async (movie_uuid) => {
         return new Promise((resolve, reject) => {
-            axios.get(BACKEND_ENDPOINT + "/v1/home/"+movie_uuid, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
+            axios.get(BACKEND_ENDPOINT + "/v1/home/" + movie_uuid, { headers: { "Authorization": "Bearer " + localStorage.getItem("token") } })
                 .then(
                     (response) => {
                         resolve(response.data)

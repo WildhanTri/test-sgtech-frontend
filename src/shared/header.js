@@ -1,19 +1,40 @@
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { UserContext } from "../stores/userProvider";
 import { Button, Nav, Form } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useQuery } from "../utils/util";
 
-const Header = () => {
+const Header = (props) => {
 
-  const { user } = useContext(UserContext)
+  const { user, searchInput } = useContext(UserContext)
 
   const [stateUser, setStateUser] = user
 
+  let query = useQuery();
+  const [searchQuery, setSearchQuery] = searchInput
+
   useEffect(() => {
-      // setStateUser({...stateUser, user_email:'djaidjasij@gmail.com  '})
+    setSearchQuery(query.get("q"))
   }, [])
+
+  const inputOnchangeHandler = (event) => {
+    switch (event.target.id) {
+      case "searchQueryInput":
+        setSearchQuery(event.target.value)
+        break
+      default:
+        break
+    }
+  }
+
+  const history = useHistory()
+  const searchFilm = (e) => {
+    e.preventDefault()
+    props.searchFilm(searchQuery)
+    history.push("/movies")
+  }
 
   return (
     <div style={style.container}>
@@ -30,9 +51,12 @@ const Header = () => {
         </Nav>
       </div>
       <div style={style.menuSearch}>
-        <Form style={{ maxWidth: '512px', width: '100%' }}>
-          <Form.Group controlId="exampleForm.ControlInput1">
-            <Form.Control type="text" placeholder="Cari film..." />
+        <Form style={{ maxWidth: '512px', width: '100%' }} onSubmit={(e) => { searchFilm(e); }}>
+          <Form.Group controlId="searchQueryInput">
+            <Form.Control type="text" placeholder="Cari film..." value={searchQuery}
+              onChange={newFields => {
+                inputOnchangeHandler(newFields)
+              }} />
           </Form.Group>
         </Form>
       </div>

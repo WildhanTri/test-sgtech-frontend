@@ -60,11 +60,8 @@ const MovieDetail = () => {
     }, 2000)
   }
 
-
-
   return (
     <div style={styles.container} className="container mt-4">
-
       {
         stateMovieLoading &&
         <div className="w-100 h-100 d-flex align-items-center justify-content-center pt-5 pb-5">

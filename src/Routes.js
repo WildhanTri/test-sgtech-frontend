@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
-  BrowserRouter
+  useHistory
 } from "react-router-dom";
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
@@ -14,7 +14,6 @@ import MovieDetail from "./pages/content/movies/detail";
 import Profile from "./pages/content/profile";
 import Header from "./shared/header";
 import { UserContext } from "./stores/userProvider";
-import createHistory from "history/createBrowserHistory"
 import ScrollToTop from "./utils/scrollToTop";
 
 const Routes = () => {
@@ -22,9 +21,15 @@ const Routes = () => {
   const { user } = useContext(UserContext)
   const [stateUser, setStateUser] = user
 
+  const [searchQuery, setSearchQuery] = useState("")
+
+  const searchFilm = (q) => {
+    setSearchQuery(q)
+  }
+
   return (
     <Router>
-      <Header></Header>
+      <Header searchFilm={(q) => { searchFilm(q) }}></Header>
       <div style={{ paddingTop: 64 }}>
         <ScrollToTop />
         <Switch>
@@ -46,7 +51,7 @@ const Routes = () => {
             <Home />
           </Route>
           <Route exact path="/movies">
-            <Movies />
+            <Movies searchQuery={searchQuery} />
           </Route>
           <Route exact path="/movies/:movie_uuid">
             <MovieDetail />

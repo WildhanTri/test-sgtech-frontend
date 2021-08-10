@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 
 export const convertISODateToYYYYMMDD = (date) => {
     var newDate = new Date(date);
@@ -12,3 +13,7 @@ export const currencyFormat = (num) => {
     }
     return ''
 }
+
+export const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  }
