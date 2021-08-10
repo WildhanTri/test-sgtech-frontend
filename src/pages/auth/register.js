@@ -1,10 +1,14 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from 'react-router-dom';
 import { Row, Col, Form, Card, Button } from 'react-bootstrap';
 import UserService from "../../services/UserService";
+import { UserContext } from "../../stores/userProvider";
 
 const Register = () => {
+
+  const { user } = useContext(UserContext)
+  const [stateUser, setStateUser] = user
 
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -63,6 +67,7 @@ const Register = () => {
         localStorage.setItem("token", resolve.object)
         userService.getProfile()
           .then((resolve) => {
+            setStateUser(resolve.object)
             localStorage.setItem("user", JSON.stringify(resolve.object))
             history.push("/home")
           })
