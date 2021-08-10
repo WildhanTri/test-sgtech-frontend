@@ -43,24 +43,29 @@ const Header = (props) => {
           INDOFLIX
         </Link>
       </div>
-      <div style={style.menuNav}>
-        <Nav defaultActiveKey="/home" as="ul">
-          <Nav.Item as="li" style={style.menuNavItem}>
-            <Nav.Link style={{ color: 'white' }} href="/movies">Movies</Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </div>
-      <div style={style.menuSearch}>
-        <Form style={{ maxWidth: '512px', width: '100%' }} onSubmit={(e) => { searchFilm(e); }}>
-          <Form.Group controlId="searchQueryInput">
-            <Form.Control type="text" placeholder="Cari film..." value={searchQuery}
-              onChange={newFields => {
-                inputOnchangeHandler(newFields)
-              }} />
-          </Form.Group>
-        </Form>
-      </div>
-
+      {
+        stateUser != null &&
+        <div style={style.menuNav}>
+          <Nav defaultActiveKey="/home" as="ul">
+            <Nav.Item as="li" style={style.menuNavItem}>
+              <Nav.Link style={{ color: 'white' }} href="/movies">Movies</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </div>
+      }
+      {
+        stateUser != null &&
+        <div style={style.menuSearch}>
+          <Form style={{ maxWidth: '512px', width: '100%' }} onSubmit={(e) => { searchFilm(e); }}>
+            <Form.Group controlId="searchQueryInput">
+              <Form.Control type="text" placeholder="Cari film..." value={searchQuery}
+                onChange={newFields => {
+                  inputOnchangeHandler(newFields)
+                }} />
+            </Form.Group>
+          </Form>
+        </div>
+      }
       {
         stateUser != null &&
         <div style={{ display: 'flex' }}>
@@ -93,7 +98,7 @@ const style = {
     position: 'fixed',
     width: '100%',
     background: '#1c1c1c',
-    zIndex: '1'
+    zIndex: '4'
   },
 
   logoWrapper: {
